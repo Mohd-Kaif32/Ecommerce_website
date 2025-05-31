@@ -7,6 +7,7 @@ const catchAsyncErrors=require("../middleware/catchAsyncErrors");
 
 // Create Product--> Admin
 exports.createProduct=(async(req,res,next)=>{
+    req.body.user=req.user.id;
     const product = await Product.create(req.body);
 
     res.status(201).json({
@@ -18,7 +19,7 @@ exports.createProduct=(async(req,res,next)=>{
 //Get all Product
 exports.getAllProducts=catchAsyncErrors(async(req,res)=>{
     const resultPerPage=5;
-    const productCount=Product.count();
+    // const productCount=Product.count();
     const ApiFeature=new ApiFeatures(Product.find(),req.query).search().filter().pagination(resultPerPage);
     const products=await ApiFeature.query;
     res.status(200).json({
