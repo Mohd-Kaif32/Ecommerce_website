@@ -1,4 +1,6 @@
 const mongoose=require("mongoose");
+require("./userModel");
+require("./productModel");
 
 const orderSchema=new mongoose.Schema({
     shippingInfo:{
