@@ -19,12 +19,15 @@ exports.createProduct=(async(req,res,next)=>{
 //Get all Product
 exports.getAllProducts=catchAsyncErrors(async(req,res)=>{
     const resultPerPage=5;
-    // const productCount=Product.count();
+   
+    const productCount=await Product.countDocuments();
+    
     const ApiFeature=new ApiFeatures(Product.find(),req.query).search().filter().pagination(resultPerPage);
     const products=await ApiFeature.query;
     res.status(200).json({
         success:true,
-        products
+        products,
+        productCount
     });
 })
 
@@ -44,7 +47,7 @@ exports.getProductDetails=catchAsyncErrors(async(req,res,next)=>{
 
 
 
-//Update Product --Admin
+
 
 exports.updateProduct=catchAsyncErrors(async(req,res,next)=>{
     let product=await Product.findById(req.params.id);
