@@ -6,6 +6,8 @@ import React from "react";
 import {BrowserRouter as Router,Route} from "react-router-dom";
 import WebFont from "webfontloader";
 import Home from "./component/Home/Home.js"
+import Loader from './component/layout/Loader/Loader.js';
+import productDetails from "./component/Product/ProductDetails.js"
 function App() {
   React.useEffect(()=>{
     WebFont.load({
@@ -17,6 +19,8 @@ function App() {
   return <Router>
   <Header/>
   <Route exact path="/" component={Home}/>
+  <Route exact path="/product/:id" component={productDetails}/>
+  
   <Footer/>
   </Router>
     
