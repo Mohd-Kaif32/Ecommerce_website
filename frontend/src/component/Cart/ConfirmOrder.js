@@ -5,8 +5,10 @@ import MetaData from "../layout/MetaData";
 import "./ConfirmOrder.css";
 import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
+import { useAlert } from 'react-alert';
 
 const ConfirmOrder = ({ history }) => {
+   const alert = useAlert();
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
 
@@ -24,16 +26,18 @@ const ConfirmOrder = ({ history }) => {
   const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}`;
 
   const proceedToPayment = () => {
-    const data = {
-      subtotal,
-      shippingCharges,
-      tax,
-      totalPrice,
-    };
+    // const data = {
+    //   subtotal,
+    //   shippingCharges,
+    //   tax,
+    //   totalPrice,
+    // };
 
-    sessionStorage.setItem("orderInfo", JSON.stringify(data));
+    // sessionStorage.setItem("orderInfo", JSON.stringify(data));
 
     history.push("/process/payment");
+    alert.success("Order Placed");
+    
   };
 
   return (

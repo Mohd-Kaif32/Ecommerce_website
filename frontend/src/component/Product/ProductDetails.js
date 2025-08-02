@@ -74,6 +74,7 @@ console.log(product);
       
       <div>
         <Carousel>
+          
           {product.images && product.images.map((item,i)=>(
             <img
              className='CarouselImage'

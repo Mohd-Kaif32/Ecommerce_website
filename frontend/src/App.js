@@ -71,11 +71,12 @@ function App() {
   <ProtectedRoute exact path="/shipping" component={Shipping}/>
 
   <ProtectedRoute exact path="/order/confirm" component={ConfirmOrder}/>
-  <Route
+  {/* <Route
           component={
             window.location.pathname === "/process/payment" ? null : NotFound
           }
-        />
+        /> */}
+        <Route exact path="/process/payment" component={Payment}/>
   <Footer/>
   </Router>
     

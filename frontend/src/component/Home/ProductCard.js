@@ -2,7 +2,8 @@ import React from 'react'
 import {Link} from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 import Eid from "../../images/Eid.webp"
-import NewProduct from "../../images/NewProduct.jpg";
+import NewProduct from "../../images/NewProduct.jpg"
+import laptop from "../../images/laptop.avif";
 
 const ProductCard = ({product}) => {
   const options={
@@ -13,10 +14,10 @@ const ProductCard = ({product}) => {
     value:product.ratings,
     isHalf:true,
 }
-
+console.log(product);
   return (
     <Link className="productCard" to={`/product/${product._id}`}>
-        <img src={NewProduct} alt={product.name} />
+        <img src={ NewProduct } alt={product.name} />
         <p>{product.name}</p>
         <div>
             <ReactStars {...options}/>
