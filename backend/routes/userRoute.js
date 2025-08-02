@@ -2,11 +2,14 @@ const express=require("express");
 const {registeUser,loginUser,logout,forgotPassword,resetPassword,getUserDetails,updatePassword,updateProfile,getAllUser,getSingleUser,updateUserRole,deleteUser}=require("../controllers/userController.js");
 const router=express.Router();
 const {isAuthenticatedUser,authorizeRoles}=require("../middleware/auth.js");
+
+
 router.route("/register").post(registeUser);
 
 
 
 router.route("/login").post(loginUser);
+
 
 router.route("/password/forgot").post(forgotPassword);
 

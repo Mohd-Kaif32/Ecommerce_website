@@ -1,8 +1,9 @@
 const Product=require("../models/productModel.js");
 const ErrorHandler=require("../utils/errorhandler.js");
 const ApiFeatures=require("../utils/apifeatures.js");
-
-const catchAsyncErrors=require("../middleware/catchAsyncErrors");
+const qs=require("qs");
+// const catchAsyncErrors= new ApiFeatures("../middleware/catchAsyncErrors");
+const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 
 
 // Create Product--> Admin
@@ -18,16 +19,33 @@ exports.createProduct=(async(req,res,next)=>{
 
 //Get all Product
 exports.getAllProducts=catchAsyncErrors(async(req,res)=>{
-    const resultPerPage=5;
+    const resultPerPage=8;
+
+    const parsedQuery=qs.parse(req.query);
+    console.log("Parsed query string",parsedQuery);
+
+
+    const productsCount=await Product.countDocuments();
+
    
-    const productCount=await Product.countDocuments();
+    
     
     const ApiFeature=new ApiFeatures(Product.find(),req.query).search().filter().pagination(resultPerPage);
+
+    // let products=await apiFeature.query;
+
+    // let filteredProductsCount=products.length;
+
+    // apiFeature.pagination(resultPerPage);
+
+
     const products=await ApiFeature.query;
     res.status(200).json({
         success:true,
         products,
-        productCount
+        productsCount,
+        resultPerPage,
+        // filteredProductsCount
     });
 })
 
@@ -40,7 +58,7 @@ exports.getProductDetails=catchAsyncErrors(async(req,res,next)=>{
     res.status(200).json({
         success:true,
         product,
-        productCount
+        
     })
 })
 
@@ -90,7 +108,7 @@ exports.createProductReview=catchAsyncErrors(async(req,res,next)=>{
     }
 
     const product=await Product.findById(productId);
-console.log(product);
+// console.log(product);
     if(!product){
         return next(new ErrorHandler("product doesnot exist",404));
     }

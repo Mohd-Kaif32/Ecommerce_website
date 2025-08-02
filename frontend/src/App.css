@@ -3,6 +3,21 @@
   scroll-behavior: smooth;
 }
 
+input::-wetkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"]{
+  -moz-appearance: textfield;
+}
+.greenColor{
+  color:green;
+}
+.redColor{
+  color:red;
+}
 
 /* .App {
   text-align: center;
