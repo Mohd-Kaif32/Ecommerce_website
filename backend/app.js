@@ -7,7 +7,12 @@ const cors=require("cors");
 
 const errorMiddleware=require("./middleware/error.js");
 
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use(cookieParser());
