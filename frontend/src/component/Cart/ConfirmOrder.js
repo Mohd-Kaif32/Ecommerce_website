@@ -36,7 +36,7 @@ const ConfirmOrder = ({ history }) => {
     // sessionStorage.setItem("orderInfo", JSON.stringify(data));
 
     history.push("/process/payment");
-    alert.success("Order Placed");
+    alert.success("Order Placed Successfully");
     
   };
 

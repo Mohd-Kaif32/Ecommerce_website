@@ -21,6 +21,7 @@ const Home = () => {
   const alert=useAlert();
   const dispatch=useDispatch();
   const {loading,error,products}=useSelector((state)=>state.products);
+  const { isAuthenticated } = useSelector((state) => state.user);
   // console.log(products);
   // const {products}}=useSelector((action)=>action.products);
   // console.log(productCount);
@@ -47,8 +48,11 @@ const Home = () => {
           <div style={{position:"absolute", top:"3vmax", right:"90px",
             zIndex: 9999}}>
             <button style={{padding:"6px 10px", borderRadius:"8px", border:"0", margin:"10px 0"}} onClick={()=>{history.push("/search")}}>search product</button>
+            {!isAuthenticated &&
       <button style={{padding:"6px 10px", borderRadius:"8px", border:"0", width:"85%"}} onClick={()=>{history.push("/login")}}>Login</button>
+            }
           </div>
+          
           
             <p>Welcome to Ecommerce</p>
                 <h1>FIND AMAZING PRODUCTS BELOW</h1>
