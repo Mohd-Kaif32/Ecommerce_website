@@ -1,4 +1,4 @@
-.dashboard {
+/* .dashboard {
   width: 100vw;
   max-width: 100%;
   display: grid;
@@ -68,13 +68,14 @@
 
 .lineChart {
   width: 80%;
-  margin: auto;
+  margin: 2rem auto;
 }
 
 .doughnutChart {
   width: 30vmax;
-  margin: auto;
+  margin: 2rem auto;
 }
+
 
 @media screen and (max-width: 600px) {
   .dashboard {
@@ -93,5 +94,354 @@
     padding: 0.5rem;
     margin: 1rem;
     font: 300 0.9rem "Roboto";
+  }
+} */
+
+ /* 
+.dashboard {
+  width: 100vw;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 5fr; 
+  min-height: 100vh;
+  background: #fff;
+}
+
+.dashboardContainer {
+  border-left: 1px solid rgba(0, 0, 0, 0.13);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.dashboardContainer > h1 {
+  color: rgba(0, 0, 0, 0.733);
+  font: 300 2rem "Roboto";
+  text-align: center;
+}
+
+
+.chartsContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+}
+
+.lineChart {
+  flex: 2;
+  max-width: 600px;
+}
+
+.doughnutChart {
+  flex: 1;
+  max-width: 300px;
+}
+
+
+.dashboardSummary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.dashboardSummary > div > p {
+  background-color: rgba(70, 117, 218, 0.932);
+  color: white;
+  font: 300 1.3rem "Roboto";
+  text-align: center;
+  padding: 1.5rem;
+  width: 100%;
+  margin: 0 2rem;
+}
+
+.dashboardSummaryBox2 {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.dashboardSummaryBox2 > a {
+  color: #000;
+  font: 300 1.2rem "Roboto";
+  text-align: center;
+  background-color: rgb(255, 233, 174);
+  text-decoration: none;
+  padding: 1.5rem;
+  width: 10vmax;
+  height: 10vmax;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dashboardSummaryBox2 > a:first-child {
+  background-color: rgb(255, 110, 110);
+  color: #fff;
+}
+
+.dashboardSummaryBox2 > a:last-child {
+  background-color: rgb(51, 51, 51);
+  color: #fff;
+}
+
+
+@media screen and (max-width: 768px) {
+  .chartsContainer {
+    flex-direction: column;
+  }
+
+  .lineChart,
+  .doughnutChart {
+    max-width: 100%;
+    width: 90%;
+  }
+
+  .dashboardSummaryBox2 > a {
+    width: 8rem;
+    height: 8rem;
+    font: 300 1rem "Roboto";
+  }
+} */
+
+/* dashboard.css - full file */
+
+/* Reset/body */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+/* Outer layout */
+.dashboard {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+}
+
+/* Left Sidebar */
+.sidebar {
+  width: 220px;
+  background-color: #f5f5f5;
+  padding: 1rem;
+  box-shadow: 2px 0px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 1rem 0;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar ul li:hover {
+  color: tomato;
+}
+
+/* Main Content */
+.dashboardContainer {
+  flex: 1;
+  padding: 2rem;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.dashboardContainer h1 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 300;
+  color: #333;
+}
+
+/* Line Chart - Full Width */
+.lineChartFull {
+  width: 100%;
+  height: 400px;
+  background: #fff;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* NEW: container row for summary (left) + doughnut chart (right) */
+.chartsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+/* Summary Cards (Products, Orders, Users) - left column */
+.dashboardSummaryBox2 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  margin: 0;
+  min-width: 0; /* prevents overflow issues in flex parents */
+  box-sizing: border-box;
+}
+
+/* each summary card (link) */
+.summaryCard {
+  text-decoration: none;
+  color: black;
+  background-color: #ffe9ae;
+  border-radius: 50%;
+  padding: 1.5rem;
+  width: 10vmax;
+  height: 10vmax;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: 300 1.2rem "Roboto", Arial, sans-serif;
+  flex-direction: column;
+  text-align: center;
+  box-sizing: border-box;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* hover/focus affordances */
+.summaryCard:hover,
+.summaryCard:focus {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* color variations for the 3 cards */
+.dashboardSummaryBox2 > .summaryCard:nth-child(1) {
+  background-color: tomato;
+  color: white;
+}
+
+.dashboardSummaryBox2 > .summaryCard:nth-child(2) {
+  background-color: gold;
+  color: black;
+}
+
+.dashboardSummaryBox2 > .summaryCard:nth-child(3) {
+  background-color: #333;
+  color: white;
+}
+
+/* Doughnut Chart - fixed on right */
+.doughnutChartRight {
+  width: 300px;
+  height: 300px;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  flex: 0 0 auto;
+  margin-left: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Make chart canvas fill container (chartjs will respect) */
+.doughnutChartRight canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* Total Amount Box */
+.dashboardSummary {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.dashboardSummary > div > p {
+  background-color: cornflowerblue;
+  color: white;
+  font: 300 1.3rem "Roboto", Arial, sans-serif;
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+/* Responsive Styling */
+@media screen and (max-width: 1024px) {
+  .lineChartFull {
+    height: 320px;
+  }
+
+  .doughnutChartRight {
+    width: 280px;
+    height: 280px;
+  }
+
+  .summaryCard {
+    width: 9vmax;
+    height: 9vmax;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .lineChartFull {
+    height: 300px;
+  }
+
+  .chartsRow {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dashboardSummaryBox2 {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .summaryCard {
+    width: 8rem;
+    height: 8rem;
+    font: 300 1rem "Roboto", Arial, sans-serif;
+  }
+
+  .doughnutChartRight {
+    width: 80%;
+    height: auto;
+    padding: 0.75rem;
+    margin-left: 0;
+  }
+
+  .doughnutChartRight canvas {
+    height: auto !important;
+  }
+
+  .dashboardSummary > div > p {
+    font-size: 1.1rem;
+    padding: 1rem;
   }
 }

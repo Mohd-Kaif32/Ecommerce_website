@@ -1,3 +1,4 @@
+
 .emptyCart {
   margin: auto;
   text-align: center;
@@ -56,29 +57,41 @@
 .cartInput {
   display: flex;
   align-items: center;
-  height: 8vmax;
+  /* height: 8vmax; */
+  gap:0;
+  justify-content:center;
+  min-height:2.6rem;
 }
 
 .cartInput > button {
   border: none;
   background-color: rgba(0, 0, 0, 0.616);
-  padding: 0.5vmax;
+  padding: 0vmax;
+  width:2.2vmax;
+  height:2.2vmax;
   cursor: pointer;
   color: white;
   transition: all 0.5s;
 }
 .cartInput > button:hover {
+  gap:0;
   background-color: rgba(0, 0, 0, 0.767);
 }
 
 .cartInput > input {
-  border: none;
-  padding: 0.5vmax;
-  width: 1vmax;
+  /* box-sizing:border-box; */
+  border: 1px solid #ddd;
+  /* padding: 0.5vmax; */
+  width: 2.2vmax;
+  height : 2.2vmax;
+  padding:0;
+  margin:0;
   text-align: center;
   outline: none;
   font: 400 0.8vmax "Roboto";
   color: rgba(0, 0, 0, 0.74);
+  background:#fff;
+  line-height:2.2vmax;
 }
 
 .cartSubtotal {

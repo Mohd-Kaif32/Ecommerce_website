@@ -7,7 +7,7 @@ import {
   getAdminProduct,
   deleteProduct,
 } from "../../actions/productAction";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom"; // useHistory for v5
 import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
@@ -16,13 +16,12 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import SideBar from "./Sidebar";
 import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 
-const ProductList = ({ history }) => {
+const ProductList = () => {
   const dispatch = useDispatch();
-
   const alert = useAlert();
+  const history = useHistory(); // useHistory instead of useNavigate
 
   const { error, products } = useSelector((state) => state.products);
-
   const { error: deleteError, isDeleted } = useSelector(
     (state) => state.product
   );
@@ -44,7 +43,7 @@ const ProductList = ({ history }) => {
 
     if (isDeleted) {
       alert.success("Product Deleted Successfully");
-      history.push("/admin/dashboard");
+      history.push("/admin/dashboard"); // navigate replaced by history.push
       dispatch({ type: DELETE_PRODUCT_RESET });
     }
 
@@ -53,7 +52,6 @@ const ProductList = ({ history }) => {
 
   const columns = [
     { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
-
     {
       field: "name",
       headerName: "Name",
@@ -67,7 +65,6 @@ const ProductList = ({ history }) => {
       minWidth: 150,
       flex: 0.3,
     },
-
     {
       field: "price",
       headerName: "Price",
@@ -75,7 +72,6 @@ const ProductList = ({ history }) => {
       minWidth: 270,
       flex: 0.5,
     },
-
     {
       field: "actions",
       flex: 0.3,

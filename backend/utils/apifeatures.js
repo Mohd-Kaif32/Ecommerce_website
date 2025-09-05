@@ -14,56 +14,41 @@ class ApiFeatures{
         this.query=this.query.find({...keyword});
         return this;
     }
-    // filter(){
-    //     const queryCopy={...this.queryStr};
-    //     const removeFields=["keyword","page","limit"];
-        
 
-    //     removeFields.forEach(key=>delete queryCopy[key]);
-
-
-    // //     if (queryCopy.price) {
-    // //     if (queryCopy.price.gte) queryCopy.price.gte = Number(queryCopy.price.gte);
-    // //     if (queryCopy.price.lte) queryCopy.price.lte = Number(queryCopy.price.lte);
-    // // }
-
-    //     let queryStr=JSON.stringify(queryCopy);
-    //     queryStr=queryStr.replace(/\b(gt|gte|lt|lte)\b/g,(key)=>`$${key}`);
-
-    //     this.query=this.query.find(JSON.parse(queryStr));
-
-    //     return this;
-    // }
 
     filter() {
-    const queryCopy = { ...this.queryStr };
+  const queryCopy = { ...this.queryStr };
 
-    const removeFields = ["keyword", "page", "limit"];
-    removeFields.forEach((key) => delete queryCopy[key]);
+  // Remove fields that are not for filtering
+  const removeFields = ["keyword", "page", "limit"];
+  removeFields.forEach((key) => delete queryCopy[key]);
 
-    
-    if (queryCopy.price) {
-        const priceFilter = {};
+  console.log("Query Copy Before Parsing:", queryCopy);
 
-        if (queryCopy.price.gte) {
-            priceFilter.$gte = Number(queryCopy.price.gte);
-        }
+  // Convert gte/lte/gt/lt to MongoDB operators
+  let queryStr = JSON.stringify(queryCopy);
+  queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
 
-        if (queryCopy.price.lte) {
-            priceFilter.$lte = Number(queryCopy.price.lte);
-        }
+  console.log("Query String After Replace:", queryStr);
 
-        queryCopy.price = priceFilter;
-    }
+  const parsed = JSON.parse(queryStr);
+  
 
-    console.log("Final MongoDB query conditions:", queryCopy);
+  // Ensure numeric values are cast to numbers
+  if (parsed.price) {
+    if (parsed.price.$gte) parsed.price.$gte = Number(parsed.price.$gte);
+    if (parsed.price.$lte) parsed.price.$lte = Number(parsed.price.$lte);
+  }
 
-    this.query = this.query.find(queryCopy);
-    return this;
+  if (parsed.ratings) {
+    if (parsed.ratings.$gte) parsed.ratings.$gte = Number(parsed.ratings.$gte);
+  }
+
+  console.log("Parsed Query:", parsed);
+
+  this.query = this.query.find(parsed);
+  return this;
 }
-
-
-
 
 
 

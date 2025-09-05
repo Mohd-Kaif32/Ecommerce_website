@@ -1,10 +1,10 @@
 const express=require("express");
-const {registeUser,loginUser,logout,forgotPassword,resetPassword,getUserDetails,updatePassword,updateProfile,getAllUser,getSingleUser,updateUserRole,deleteUser}=require("../controllers/userController.js");
+const {registerUser,loginUser,logout,forgotPassword,resetPassword,getUserDetails,updatePassword,updateProfile,getAllUser,getSingleUser,updateUserRole,deleteUser}=require("../controllers/userController.js");
 const router=express.Router();
 const {isAuthenticatedUser,authorizeRoles}=require("../middleware/auth.js");
 
 
-router.route("/register").post(registeUser);
+router.route("/register").post(registerUser);
 
 
 

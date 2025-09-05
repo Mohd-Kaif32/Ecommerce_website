@@ -33,6 +33,7 @@ exports.createProduct=(async(req,res,next)=>{
     req.body.user=req.user.id;
 
     const product = await Product.create(req.body);
+    console.log(product);
 
     res.status(201).json({
         sucess:true,
@@ -108,7 +109,7 @@ exports.getAllProducts=catchAsyncErrors(async(req,res)=>{
    
     
     
-    const ApiFeature=new ApiFeatures(Product.find(),req.query).search().filter().pagination(resultPerPage);
+    const ApiFeature=new ApiFeatures(Product.find(),parsedQuery).search().filter().pagination(resultPerPage);
 
     // let products=await apiFeature.query;
 

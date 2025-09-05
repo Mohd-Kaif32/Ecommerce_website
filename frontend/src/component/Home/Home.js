@@ -22,7 +22,7 @@ const Home = () => {
   const dispatch=useDispatch();
   const {loading,error,products}=useSelector((state)=>state.products);
   const { isAuthenticated } = useSelector((state) => state.user);
-  // console.log(products);
+  console.log(products);
   // const {products}}=useSelector((action)=>action.products);
   // console.log(productCount);
   
@@ -47,9 +47,11 @@ const Home = () => {
         <div className="banner">
           <div style={{position:"absolute", top:"3vmax", right:"90px",
             zIndex: 9999}}>
-            <button style={{padding:"6px 10px", borderRadius:"8px", border:"0", margin:"10px 0"}} onClick={()=>{history.push("/search")}}>search product</button>
+            <button style={{padding:"6px 10px", borderRadius:"8px", border:"0", margin:"10px 0",cursor:"pointer"}} onClick={()=>{history.push("/products")}}>products</button>
+            <br />
+            <button style={{padding:"6px 10px", borderRadius:"8px", border:"0", margin:"10px 0",cursor:"pointer"}} onClick={()=>{history.push("/search")}}>search products</button>
             {!isAuthenticated &&
-      <button style={{padding:"6px 10px", borderRadius:"8px", border:"0", width:"85%"}} onClick={()=>{history.push("/login")}}>Login</button>
+      <button style={{padding:"6px 10px", borderRadius:"8px", border:"0", width:"85%",cursor:"pointer"}} onClick={()=>{history.push("/login")}}>Login</button>
             }
           </div>
           
@@ -57,7 +59,11 @@ const Home = () => {
             <p>Welcome to Ecommerce</p>
                 <h1>FIND AMAZING PRODUCTS BELOW</h1>
                     <a href="#container">
-                        <button >
+                        <button 
+                        onClick={() => {
+    window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
+  }}
+                        >
                             Scroll <CgMouse/>
                             {/* scroll */}
                         </button>
@@ -80,3 +86,4 @@ const Home = () => {
 }
 
 export default Home
+

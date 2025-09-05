@@ -1,4 +1,4 @@
-
+/* 
 .payment-container {
   display: flex;
   flex-direction:column;
@@ -6,7 +6,7 @@
   
   
   align-items: center;
-  height: 100vh; /* Full page height */
+  height: 100vh; 
   background-color: #fdfdfd;
 }
 
@@ -25,4 +25,118 @@
   cursor:pointer;
   
 }
+ */
 
+ /* Container centers the card */
+.payment-container {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(180deg, #ffffff 0%, #fffaf3 100%);
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+/* Payment card */
+.payment-card {
+  width: 420px;
+  max-width: 95%;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.8rem;
+  box-sizing: border-box;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+/* Title */
+.payment-title {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Summary box */
+.payment-summary {
+  margin: 1rem 0;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #fff7e6;
+  border: 1px solid rgba(249, 115, 22, 0.2);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.summary-row.total {
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-top: 1px dashed rgba(55, 65, 81, 0.15);
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  color: #0f172a;
+}
+
+/* Buttons container */
+.payment-actions {
+  margin-top: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+/* Primary button (Razorpay) */
+.btn-primary {
+  background: linear-gradient(90deg, #f97316, #ef4444);
+  color: #fff;
+  border: none;
+  padding: 0.95rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(249, 115, 22, 0.15);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(249, 115, 22, 0.25);
+}
+
+.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+/* Secondary button */
+.btn-secondary {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.85rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #374151;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Note text */
+.note {
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  color: #6b7280;
+  line-height: 1.4;
+}
